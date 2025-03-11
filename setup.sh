@@ -52,6 +52,62 @@ IMPORT_GRAFANA_DASHBOARD ()
     curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/user_reports.json http://admin:admin@localhost:3000/api/dashboards/db
 }
 
+CONFIGURE_GRAFANA_DATASOURCES () 
+{
+    echo "Configuring Grafana data sources..."
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "name": "SafeSquid-Config",
+        "type": "elasticsearch",
+        "url": "http://localhost:9200",
+        "access": "proxy",
+        "basicAuth": false,
+        "database": "safesquid-conf_YYYY_MM",
+        "jsonData": {
+            "esVersion": 70,
+            "timeField": "@timestamp"
+        }
+    }' http://admin:admin@localhost:3000/api/datasources
+
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "name": "SafeSquid-CSP",
+        "type": "elasticsearch",
+        "url": "http://localhost:9200",
+        "access": "proxy",
+        "basicAuth": false,
+        "database": "safesquid-csp_YYYY_MM",
+        "jsonData": {
+            "esVersion": 70,
+            "timeField": "@timestamp"
+        }
+    }' http://admin:admin@localhost:3000/api/datasources
+
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "name": "safesquid-extended",
+        "type": "elasticsearch",
+        "url": "http://localhost:9200",
+        "access": "proxy",
+        "basicAuth": false,
+        "database": "safesquid-ext_YYYY_MM",
+        "jsonData": {
+            "esVersion": 70,
+            "timeField": "@timestamp"
+        }
+    }' http://admin:admin@localhost:3000/api/datasources
+
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "name": "safesquid-performance",
+        "type": "elasticsearch",
+        "url": "http://localhost:9200",
+        "access": "proxy",
+        "basicAuth": false,
+        "database": "safesquid-perf_YYYY_MM",
+        "jsonData": {
+            "esVersion": 70,
+            "timeField": "@timestamp"
+        }
+    }' http://admin:admin@localhost:3000/api/datasources
+}
+
 MAIN () 
 {
     UPDATE_PACKAGES
@@ -59,6 +115,7 @@ MAIN ()
     ADD_REPO
     INSTALL && echo "Installation complete! Elasticsearch, Logstash, and Grafana are running."
     SETUP_LOGSTASH
+    CONFIGURE_GRAFANA_DATASOURCES
     IMPORT_GRAFANA_DASHBOARD
 }
 
