@@ -17,7 +17,7 @@ Before running the setup script, ensure you have the following:
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/yourusername/SafeSquid-ELG-Reporting.git
+    git clone https://github.com/SafeSquid-Github/SafeSquid-ELG-Reporting
     cd SafeSquid-ELG-Reporting
     ```
 
