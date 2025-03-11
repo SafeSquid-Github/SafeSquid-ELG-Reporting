@@ -32,6 +32,7 @@ INSTALL ()
 {
     # Install Elasticsearch
     echo "Installing Elasticsearch"
+    sudo apt update
     sudo apt install -y elasticsearch logstash grafana
     sudo systemctl enable --now elasticsearch logstash grafana-server
     echo "Elasticsearch installed."
