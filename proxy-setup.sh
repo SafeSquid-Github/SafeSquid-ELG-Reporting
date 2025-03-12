@@ -40,7 +40,8 @@ UPDATE_CONF ()
 
     # Sync the files to the appropriate directory
     sudo rsync -av /tmp/reporting/rsyslog.conf /etc/
-    sudo rsync -av /tmp/reporting/rsyslog.d/ /etc/rsyslog.d/
+    sudo rsync -av /tmp/reporting/50-default.conf /etc/rsyslog.d/
+    sudo rsync -av /tmp/reporting/99-safesquid.conf /etc/rsyslog.d/
 }
 
 RESTRT_SERVICE () 
