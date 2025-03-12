@@ -4,7 +4,7 @@
 set -e
 
 # Create the directory to store the downloaded files
-mkdir -p /tmp/reporting/
+[ ! -d "/tmp/reporting/"] && mkdir -p /tmp/reporting/ || rm -rf /tmp/reporting/*
 
 GET_CONF () 
 {
