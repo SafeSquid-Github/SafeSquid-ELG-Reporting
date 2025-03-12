@@ -26,6 +26,13 @@ Before running the setup script, ensure you have the following:
     ```sh
     bash ./setup.sh
     ```
+## Proxy Setup
+
+To set up the proxy, you can use the following one-liner to download and execute the proxy setup script:
+
+```sh
+curl -s https://raw.githubusercontent.com/SafeSquid-Github/SafeSquid-ELG-Reporting/refs/heads/main/proxy-setup.sh | sudo bash
+```
 
 ## What the Script Does
 
@@ -35,6 +42,7 @@ Before running the setup script, ensure you have the following:
 - Installs Elasticsearch, Logstash, and Grafana.
 - Sets up Logstash configuration.
 - Imports predefined Grafana dashboards.
+- Updates rsyslog configuration of your proxy server.
 
 ## Default Credentials
 
