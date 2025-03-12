@@ -31,7 +31,8 @@ Before running the setup script, ensure you have the following:
 To set up the proxy, you can use the following one-liner to download and execute the proxy setup script:
 
 ```sh
-curl -s https://raw.githubusercontent.com/SafeSquid-Github/SafeSquid-ELG-Reporting/refs/heads/main/proxy-setup.sh | sudo bash
+curl -s https://raw.githubusercontent.com/SafeSquid-Github/SafeSquid-ELG-Reporting/refs/heads/main/proxy-setup.sh -O
+bash proxy-setup.sh
 ```
 
 ## What the Script Does
