@@ -3,54 +3,37 @@
 # Exit on error
 set -e
 
-UPDATE_PACKAGES () 
+UPDATE_PACKAGES_GET_DEPENDENCIES () 
 {
-    echo "Updating system packages..."
     sudo apt update && sudo apt upgrade -y
-}
-
-GET_DEPENDENCIES () 
-{
-    echo "Installing dependencies..."
     sudo apt install -y apt-transport-https wget curl gnupg
 }
 
 ADD_REPO () 
 {
     # Add Elasticsearch repository
-    echo "Adding Elasticsearch repository..."
-    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-    echo "deb https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
-
+    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+    
     # Add Grafana repository
-    echo "Adding Grafana repository..."
-    wget -qO - https://packages.grafana.com/gpg.key | sudo apt-key add -
-    echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+    sudo mkdir -p /etc/apt/keyrings/
+    wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | tee /etc/apt/keyrings/grafana.gpg > /dev/null
+    sudo echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 }
 
 INSTALL () 
 {
-    # Install Elasticsearch
-    echo "Installing Elasticsearch"
-    sudo apt update
-    sudo apt install -y elasticsearch logstash grafana
+    # Install Elasticsearch, logstash and grafana
+    sudo apt-get update && sudo apt-get install -y  elasticsearch logstash grafana
     sudo systemctl enable --now elasticsearch logstash grafana-server
-    echo "Elasticsearch installed."
 }
 
-SETUP_LOGSTASH () 
+SETUP_CONF () 
 {
-    rsync -azvf logstash/* /etc/logstash/
-    sudo systemctl restart logstash
-}
-
-IMPORT_GRAFANA_DASHBOARD () 
-{
-    echo "Importing Grafana dashboard..."
-    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/configuration_portal_reports.json http://admin:admin@localhost:3000/api/dashboards/db
-    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/content_security_policy_reports.json http://admin:admin@localhost:3000/api/dashboards/db
-    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/performance_plots.json http://admin:admin@localhost:3000/api/dashboards/db
-    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/user_reports.json http://admin:admin@localhost:3000/api/dashboards/db
+    rsync -azv elasticsearch/elasticsearch.yml /etc/elasticsearch/
+    rsync -azv logstash/conf.d /etc/logstash/
+	rsync -azv logstash/templates /etc/logstash/
+    sudo systemctl restart logstash elasticsearch
 }
 
 CONFIGURE_GRAFANA_DATASOURCES () 
@@ -109,13 +92,21 @@ CONFIGURE_GRAFANA_DATASOURCES ()
     }' http://admin:admin@localhost:3000/api/datasources
 }
 
+IMPORT_GRAFANA_DASHBOARD () 
+{
+    #Import dasboard to grafana
+    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/configuration_portal_reports.json http://admin:admin@localhost:3000/api/dashboards/import
+    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/content_security_policy_reports.json http://admin:admin@localhost:3000/api/dashboards/db
+    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/performance_plots.json http://admin:admin@localhost:3000/api/dashboards/db
+    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/user_reports.json http://admin:admin@localhost:3000/api/dashboards/db
+}
+
 MAIN () 
 {
-    UPDATE_PACKAGES
-    GET_DEPENDENCIES
+    UPDATE_PACKAGES_GET_DEPENDENCIES
     ADD_REPO
     INSTALL && echo "Installation complete! Elasticsearch, Logstash, and Grafana are running."
-    SETUP_LOGSTASH
+    SETUP_CONF
     CONFIGURE_GRAFANA_DATASOURCES
     IMPORT_GRAFANA_DASHBOARD
 }
