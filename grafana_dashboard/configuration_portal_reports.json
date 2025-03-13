@@ -1,801 +1,807 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_SAFESQUID-CONFIG",
-      "label": "SafeSquid-Config",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "elasticsearch",
-      "pluginName": "Elasticsearch"
-    },
-    {
-      "name": "DS_SAFESQUID-CSP",
-      "label": "SafeSquid-CSP",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "elasticsearch",
-      "pluginName": "Elasticsearch"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "datasource",
-      "id": "elasticsearch",
-      "name": "Elasticsearch",
-      "version": "1.0.0"
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "11.5.2"
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
-  "annotations": {
-    "list": [
+  "dashboard": {
+      "__inputs": [
+          {
+              "name": "DS_SAFESQUID-CONFIG",
+              "label": "SafeSquid-Config",
+              "description": "",
+              "type": "datasource",
+              "pluginId": "elasticsearch",
+              "pluginName": "Elasticsearch"
+          }
+      ],
+      "__elements": {},
+      "__requires": [
+          {
+              "type": "datasource",
+              "id": "elasticsearch",
+              "name": "Elasticsearch",
+              "version": "1.0.0"
+          },
+          {
+              "type": "grafana",
+              "id": "grafana",
+              "name": "Grafana",
+              "version": "11.5.2"
+          },
+          {
+              "type": "panel",
+              "id": "table",
+              "name": "Table",
+              "version": ""
+          }
+      ],
+      "annotations": {
+          "list": [
+              {
+                  "builtIn": 1,
+                  "datasource": {
+                      "type": "grafana",
+                      "uid": "-- Grafana --"
+                  },
+                  "enable": true,
+                  "hide": true,
+                  "iconColor": "rgba(0, 211, 255, 1)",
+                  "name": "Annotations & Alerts",
+                  "type": "dashboard"
+              }
+          ]
+      },
+      "editable": true,
+      "fiscalYearStartMonth": 0,
+      "graphTooltip": 0,
+      "id": null,
+      "links": [],
+      "panels": [
+          {
+              "datasource": {
+                  "type": "elasticsearch",
+                  "uid": "${DS_SAFESQUID-CONFIG}"
+              },
+              "fieldConfig": {
+                  "defaults": {
+                      "color": {
+                          "mode": "thresholds"
+                      },
+                      "custom": {
+                          "align": "auto",
+                          "cellOptions": {
+                              "type": "auto"
+                          },
+                          "inspect": false
+                      },
+                      "mappings": [],
+                      "thresholds": {
+                          "mode": "absolute",
+                          "steps": [
+                              {
+                                  "color": "green",
+                                  "value": null
+                              },
+                              {
+                                  "color": "red",
+                                  "value": 80
+                              }
+                          ]
+                      }
+                  },
+                  "overrides": [
+                      {
+                          "matcher": {
+                              "id": "byName",
+                              "options": "@timestamp"
+                          },
+                          "properties": [
+                              {
+                                  "id": "unit",
+                                  "value": "dateTimeAsIso"
+                              }
+                          ]
+                      },
+                      {
+                          "matcher": {
+                              "id": "byName",
+                              "options": "Section"
+                          },
+                          "properties": [
+                              {
+                                  "id": "custom.width",
+                                  "value": 146
+                              }
+                          ]
+                      }
+                  ]
+              },
+              "gridPos": {
+                  "h": 8,
+                  "w": 16,
+                  "x": 0,
+                  "y": 0
+              },
+              "id": 4,
+              "options": {
+                  "cellHeight": "sm",
+                  "footer": {
+                      "countRows": false,
+                      "enablePagination": true,
+                      "fields": "",
+                      "reducer": [
+                          "sum"
+                      ],
+                      "show": false
+                  },
+                  "showHeader": true,
+                  "sortBy": []
+              },
+              "pluginVersion": "11.5.2",
+              "targets": [
+                  {
+                      "alias": "",
+                      "bucketAggs": [
+                          {
+                              "field": "section",
+                              "id": "2",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "F0",
+                              "id": "3",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "F1",
+                              "id": "4",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "@timestamp",
+                              "id": "5",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "subsection",
+                              "id": "6",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          }
+                      ],
+                      "datasource": {
+                          "type": "elasticsearch",
+                          "uid": "${DS_SAFESQUID-CONFIG}"
+                      },
+                      "metrics": [
+                          {
+                              "id": "1",
+                              "type": "count"
+                          }
+                      ],
+                      "query": "action: \"add\" AND hostname: $hostname AND server_ip: $server_ip",
+                      "refId": "A",
+                      "timeField": "@timestamp"
+                  }
+              ],
+              "title": "Policy Creation",
+              "transformations": [
+                  {
+                      "id": "organize",
+                      "options": {
+                          "excludeByName": {
+                              "Count": true
+                          },
+                          "includeByName": {},
+                          "indexByName": {
+                              "@timestamp": 0,
+                              "Count": 5,
+                              "F0": 3,
+                              "F1": 4,
+                              "section": 1,
+                              "subsection": 2
+                          },
+                          "renameByName": {
+                              "@timestamp": "Timestamp",
+                              "F0": "Policy Enabled",
+                              "F1": "Policy Comment",
+                              "section": "Section",
+                              "subsection": "Subsection"
+                          }
+                      }
+                  }
+              ],
+              "type": "table"
+          },
+          {
+              "datasource": {
+                  "type": "elasticsearch",
+                  "uid": "${DS_SAFESQUID-CONFIG}"
+              },
+              "fieldConfig": {
+                  "defaults": {
+                      "color": {
+                          "mode": "thresholds"
+                      },
+                      "custom": {
+                          "align": "auto",
+                          "cellOptions": {
+                              "type": "auto"
+                          },
+                          "inspect": false
+                      },
+                      "mappings": [],
+                      "thresholds": {
+                          "mode": "absolute",
+                          "steps": [
+                              {
+                                  "color": "green",
+                                  "value": null
+                              },
+                              {
+                                  "color": "red",
+                                  "value": 80
+                              }
+                          ]
+                      }
+                  },
+                  "overrides": [
+                      {
+                          "matcher": {
+                              "id": "byName",
+                              "options": "Timestamp"
+                          },
+                          "properties": [
+                              {
+                                  "id": "unit",
+                                  "value": "dateTimeAsIso"
+                              },
+                              {
+                                  "id": "custom.width",
+                                  "value": 170
+                              }
+                          ]
+                      },
+                      {
+                          "matcher": {
+                              "id": "byName",
+                              "options": "Username & IP"
+                          },
+                          "properties": [
+                              {
+                                  "id": "custom.width",
+                                  "value": 194
+                              }
+                          ]
+                      }
+                  ]
+              },
+              "gridPos": {
+                  "h": 8,
+                  "w": 8,
+                  "x": 16,
+                  "y": 0
+              },
+              "id": 5,
+              "options": {
+                  "cellHeight": "sm",
+                  "footer": {
+                      "countRows": false,
+                      "enablePagination": true,
+                      "fields": "",
+                      "reducer": [
+                          "sum"
+                      ],
+                      "show": false
+                  },
+                  "showHeader": true,
+                  "sortBy": []
+              },
+              "pluginVersion": "11.5.2",
+              "targets": [
+                  {
+                      "alias": "",
+                      "bucketAggs": [
+                          {
+                              "field": "overwrite",
+                              "id": "2",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "@timestamp",
+                              "id": "3",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "type",
+                              "id": "4",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "username",
+                              "id": "5",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "10"
+                              },
+                              "type": "terms"
+                          }
+                      ],
+                      "datasource": {
+                          "type": "elasticsearch",
+                          "uid": "${DS_SAFESQUID-CONFIG}"
+                      },
+                      "metrics": [
+                          {
+                              "id": "1",
+                              "type": "count"
+                          }
+                      ],
+                      "query": "handler: \"upload\" AND hostname: $hostname AND server_ip: $server_ip",
+                      "refId": "A",
+                      "timeField": "@timestamp"
+                  }
+              ],
+              "title": "Configuration File Uploaded",
+              "transformations": [
+                  {
+                      "id": "organize",
+                      "options": {
+                          "excludeByName": {
+                              "Count": true,
+                              "type": true
+                          },
+                          "includeByName": {},
+                          "indexByName": {
+                              "@timestamp": 0,
+                              "Count": 2,
+                              "overwrite": 4,
+                              "type": 3,
+                              "username": 1
+                          },
+                          "renameByName": {
+                              "@timestamp": "Timestamp",
+                              "Count": "",
+                              "config_file": "Configuration File",
+                              "overwrite": "Overwrite Configuration File",
+                              "type": "",
+                              "username": "Username & IP"
+                          }
+                      }
+                  }
+              ],
+              "type": "table"
+          },
+          {
+              "datasource": {
+                  "type": "elasticsearch",
+                  "uid": "${DS_SAFESQUID-CONFIG}"
+              },
+              "fieldConfig": {
+                  "defaults": {
+                      "color": {
+                          "mode": "thresholds"
+                      },
+                      "custom": {
+                          "align": "auto",
+                          "cellOptions": {
+                              "type": "auto"
+                          },
+                          "inspect": false
+                      },
+                      "mappings": [],
+                      "thresholds": {
+                          "mode": "absolute",
+                          "steps": [
+                              {
+                                  "color": "green",
+                                  "value": null
+                              },
+                              {
+                                  "color": "red",
+                                  "value": 80
+                              }
+                          ]
+                      }
+                  },
+                  "overrides": [
+                      {
+                          "matcher": {
+                              "id": "byName",
+                              "options": "Timestamp"
+                          },
+                          "properties": [
+                              {
+                                  "id": "unit",
+                                  "value": "dateTimeAsIso"
+                              },
+                              {
+                                  "id": "custom.width",
+                                  "value": 170
+                              }
+                          ]
+                      }
+                  ]
+              },
+              "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 8
+              },
+              "id": 3,
+              "options": {
+                  "cellHeight": "sm",
+                  "footer": {
+                      "countRows": false,
+                      "enablePagination": true,
+                      "fields": "",
+                      "reducer": [
+                          "sum"
+                      ],
+                      "show": false
+                  },
+                  "showHeader": true,
+                  "sortBy": []
+              },
+              "pluginVersion": "11.5.2",
+              "targets": [
+                  {
+                      "alias": "",
+                      "bucketAggs": [
+                          {
+                              "field": "filename",
+                              "id": "2",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "@timestamp",
+                              "id": "3",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "username",
+                              "id": "4",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          }
+                      ],
+                      "datasource": {
+                          "type": "elasticsearch",
+                          "uid": "${DS_SAFESQUID-CONFIG}"
+                      },
+                      "metrics": [
+                          {
+                              "id": "1",
+                              "type": "count"
+                          }
+                      ],
+                      "query": "NOT filename: \"-\" AND hostname: $hostname AND server_ip: $server_ip",
+                      "refId": "A",
+                      "timeField": "@timestamp"
+                  }
+              ],
+              "title": "Configuration File Downloaded",
+              "transformations": [
+                  {
+                      "id": "organize",
+                      "options": {
+                          "excludeByName": {
+                              "Count": true
+                          },
+                          "includeByName": {},
+                          "indexByName": {
+                              "@timestamp": 0,
+                              "Count": 3,
+                              "filename": 2,
+                              "username": 1
+                          },
+                          "renameByName": {
+                              "@timestamp": "Timestamp",
+                              "config_file": "Configuration File"
+                          }
+                      }
+                  }
+              ],
+              "type": "table"
+          },
+          {
+              "datasource": {
+                  "type": "elasticsearch",
+                  "uid": "${DS_SAFESQUID-CONFIG}"
+              },
+              "fieldConfig": {
+                  "defaults": {
+                      "color": {
+                          "mode": "thresholds"
+                      },
+                      "custom": {
+                          "align": "auto",
+                          "cellOptions": {
+                              "type": "auto"
+                          },
+                          "inspect": false
+                      },
+                      "mappings": [],
+                      "thresholds": {
+                          "mode": "absolute",
+                          "steps": [
+                              {
+                                  "color": "green",
+                                  "value": null
+                              },
+                              {
+                                  "color": "red",
+                                  "value": 80
+                              }
+                          ]
+                      }
+                  },
+                  "overrides": [
+                      {
+                          "matcher": {
+                              "id": "byName",
+                              "options": "TimeStamp"
+                          },
+                          "properties": [
+                              {
+                                  "id": "unit",
+                                  "value": "dateTimeAsIso"
+                              }
+                          ]
+                      },
+                      {
+                          "matcher": {
+                              "id": "byName",
+                              "options": "Username & IP"
+                          },
+                          "properties": [
+                              {
+                                  "id": "custom.width",
+                                  "value": 256
+                              }
+                          ]
+                      },
+                      {
+                          "matcher": {
+                              "id": "byName",
+                              "options": "Count"
+                          },
+                          "properties": [
+                              {
+                                  "id": "custom.width",
+                                  "value": 93
+                              }
+                          ]
+                      }
+                  ]
+              },
+              "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 8
+              },
+              "id": 1,
+              "options": {
+                  "cellHeight": "sm",
+                  "footer": {
+                      "countRows": false,
+                      "enablePagination": true,
+                      "fields": "",
+                      "reducer": [
+                          "sum"
+                      ],
+                      "show": false
+                  },
+                  "showHeader": true,
+                  "sortBy": []
+              },
+              "pluginVersion": "11.5.2",
+              "targets": [
+                  {
+                      "alias": "",
+                      "bucketAggs": [
+                          {
+                              "field": "username",
+                              "id": "2",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "safesquid_interface",
+                              "id": "3",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "10"
+                              },
+                              "type": "terms"
+                          },
+                          {
+                              "field": "@timestamp",
+                              "id": "4",
+                              "settings": {
+                                  "min_doc_count": "1",
+                                  "order": "desc",
+                                  "orderBy": "_term",
+                                  "size": "0"
+                              },
+                              "type": "terms"
+                          }
+                      ],
+                      "datasource": {
+                          "type": "elasticsearch",
+                          "uid": "${DS_SAFESQUID-CONFIG}"
+                      },
+                      "metrics": [
+                          {
+                              "id": "1",
+                              "type": "count"
+                          }
+                      ],
+                      "query": "hostname: $hostname AND server_ip: $server_ip",
+                      "refId": "A",
+                      "timeField": "@timestamp"
+                  }
+              ],
+              "title": "Interface Accessed User and IP",
+              "transformations": [
+                  {
+                      "id": "organize",
+                      "options": {
+                          "excludeByName": {
+                              "Count": true
+                          },
+                          "includeByName": {},
+                          "indexByName": {
+                              "@timestamp": 0,
+                              "Count": 3,
+                              "safesquid_interface": 1,
+                              "username": 2
+                          },
+                          "renameByName": {
+                              "@timestamp": "TimeStamp",
+                              "Count": "",
+                              "safesquid_interface": "SafeSquid Interface IP",
+                              "username": "Username & IP"
+                          }
+                      }
+                  }
+              ],
+              "type": "table"
+          }
+      ],
+      "refresh": "5s",
+      "schemaVersion": 40,
+      "tags": [],
+      "templating": {
+          "list": [
+              {
+                  "current": {},
+                  "datasource": {
+                      "type": "elasticsearch",
+                      "uid": "${DS_SAFESQUID-CONFIG}"
+                  },
+                  "definition": "{\"find\": \"terms\", \"field\":\"hostname\",\"size\": \"1000000\" }",
+                  "includeAll": true,
+                  "label": "Hostname",
+                  "multi": true,
+                  "name": "hostname",
+                  "options": [],
+                  "query": "{\"find\": \"terms\", \"field\":\"hostname\",\"size\": \"1000000\" }",
+                  "refresh": 1,
+                  "regex": "",
+                  "type": "query"
+              },
+              {
+                  "current": {},
+                  "datasource": {
+                      "type": "elasticsearch",
+                      "uid": "${DS_SAFESQUID-CONFIG}"
+                  },
+                  "definition": "{\"find\": \"terms\", \"field\":\"server_ip\",\"size\": \"1000000\" }",
+                  "includeAll": true,
+                  "label": "Server IP",
+                  "multi": true,
+                  "name": "server_ip",
+                  "options": [],
+                  "query": "{\"find\": \"terms\", \"field\":\"server_ip\",\"size\": \"1000000\" }",
+                  "refresh": 1,
+                  "regex": "",
+                  "type": "query"
+              }
+          ]
+      },
+      "time": {
+          "from": "now-30m",
+          "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "browser",
+      "title": "SafeSquid - Configuration Portal Reports",
+      "uid": "feewvgkjattdsd",
+      "version": 8,
+      "weekStart": "",
+      "gnetId": 23082,
+      "description": "Confirmation Portal Logs provide a detailed record of user authentication attempts to SafeSquid's web interface, access verifications, and configuration updates. These logs help track user activity, detect anomalies, and ensure security compliance. Ideal for monitoring updates overtime for your policy management. "
+  },
+  "overwrite": true,
+  "inputs": [
       {
-        "builtIn": 1,
-        "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
-        },
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
+          "name": "DS_SAFESQUID-CONFIG",
+          "type": "datasource",
+          "pluginId": "elasticsearch",
+          "value": "deflm0qfghxj4a"
       }
-    ]
-  },
-  "editable": true,
-  "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": null,
-  "links": [],
-  "panels": [
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "${DS_SAFESQUID-CONFIG}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "@timestamp"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dateTimeAsIso"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Section"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 146
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 16,
-        "x": 0,
-        "y": 0
-      },
-      "id": 4,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "11.5.2",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "section",
-              "id": "2",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "F0",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "F1",
-              "id": "4",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "@timestamp",
-              "id": "5",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "subsection",
-              "id": "6",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "${DS_SAFESQUID-CONFIG}"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "action: \"add\" AND hostname: $hostname AND server_ip: $server_ip",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "title": "Policy Creation",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Count": true
-            },
-            "includeByName": {},
-            "indexByName": {
-              "@timestamp": 0,
-              "Count": 5,
-              "F0": 3,
-              "F1": 4,
-              "section": 1,
-              "subsection": 2
-            },
-            "renameByName": {
-              "@timestamp": "Timestamp",
-              "F0": "Policy Enabled",
-              "F1": "Policy Comment",
-              "section": "Section",
-              "subsection": "Subsection"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "${DS_SAFESQUID-CONFIG}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Timestamp"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dateTimeAsIso"
-              },
-              {
-                "id": "custom.width",
-                "value": 170
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Username & IP"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 194
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 0
-      },
-      "id": 5,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "11.5.2",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "overwrite",
-              "id": "2",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "@timestamp",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "type",
-              "id": "4",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "username",
-              "id": "5",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "${DS_SAFESQUID-CONFIG}"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "handler: \"upload\" AND hostname: $hostname AND server_ip: $server_ip",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "title": "Configuration File Uploaded",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Count": true,
-              "type": true
-            },
-            "includeByName": {},
-            "indexByName": {
-              "@timestamp": 0,
-              "Count": 2,
-              "overwrite": 4,
-              "type": 3,
-              "username": 1
-            },
-            "renameByName": {
-              "@timestamp": "Timestamp",
-              "Count": "",
-              "config_file": "Configuration File",
-              "overwrite": "Overwrite Configuration File",
-              "type": "",
-              "username": "Username & IP"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "${DS_SAFESQUID-CONFIG}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Timestamp"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dateTimeAsIso"
-              },
-              {
-                "id": "custom.width",
-                "value": 170
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 8
-      },
-      "id": 3,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "11.5.2",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "filename",
-              "id": "2",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "@timestamp",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "username",
-              "id": "4",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "${DS_SAFESQUID-CONFIG}"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "NOT filename: \"-\" AND hostname: $hostname AND server_ip: $server_ip",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "title": "Configuration File Downloaded",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Count": true
-            },
-            "includeByName": {},
-            "indexByName": {
-              "@timestamp": 0,
-              "Count": 3,
-              "filename": 2,
-              "username": 1
-            },
-            "renameByName": {
-              "@timestamp": "Timestamp",
-              "config_file": "Configuration File"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "${DS_SAFESQUID-CONFIG}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "TimeStamp"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "dateTimeAsIso"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Username & IP"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 256
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Count"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 93
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 8
-      },
-      "id": 1,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "11.5.2",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "username",
-              "id": "2",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "safesquid_interface",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "@timestamp",
-              "id": "4",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "${DS_SAFESQUID-CONFIG}"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "hostname: $hostname AND server_ip: $server_ip",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "title": "Interface Accessed User and IP",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Count": true
-            },
-            "includeByName": {},
-            "indexByName": {
-              "@timestamp": 0,
-              "Count": 3,
-              "safesquid_interface": 1,
-              "username": 2
-            },
-            "renameByName": {
-              "@timestamp": "TimeStamp",
-              "Count": "",
-              "safesquid_interface": "SafeSquid Interface IP",
-              "username": "Username & IP"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    }
   ],
-  "refresh": "5s",
-  "schemaVersion": 40,
-  "tags": [],
-  "templating": {
-    "list": [
-      {
-        "current": {},
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "${DS_SAFESQUID-CONFIG}"
-        },
-        "definition": "{\"find\": \"terms\", \"field\":\"hostname\",\"size\": \"1000000\" }",
-        "includeAll": true,
-        "label": "Hostname",
-        "multi": true,
-        "name": "hostname",
-        "options": [],
-        "query": "{\"find\": \"terms\", \"field\":\"hostname\",\"size\": \"1000000\" }",
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {},
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "${DS_SAFESQUID-CSP}"
-        },
-        "definition": "{\"find\": \"terms\", \"field\":\"server_ip\",\"size\": \"1000000\" }",
-        "includeAll": true,
-        "label": "Server IP",
-        "multi": true,
-        "name": "server_ip",
-        "options": [],
-        "query": "{\"find\": \"terms\", \"field\":\"server_ip\",\"size\": \"1000000\" }",
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      }
-    ]
-  },
-  "time": {
-    "from": "now-30m",
-    "to": "now"
-  },
-  "timepicker": {},
-  "timezone": "browser",
-  "title": "Configuration Portal Reports",
-  "uid": "feewvgkjattdsd",
-  "version": 7,
-  "weekStart": ""
+  "folderUid": ""
 }
