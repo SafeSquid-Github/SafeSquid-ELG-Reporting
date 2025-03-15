@@ -24,7 +24,7 @@ Before running the setup script, ensure you have the following:
 2. Run the setup script:
 
     ```sh
-    bash ./setup.sh
+    bash setup.sh
     ```
 ## Proxy Setup
 
@@ -34,6 +34,7 @@ To set up the proxy, you can use the following one-liner to download and execute
 curl -s https://raw.githubusercontent.com/SafeSquid-Github/SafeSquid-ELG-Reporting/refs/heads/main/proxy-setup.sh -O
 bash proxy-setup.sh
 ```
+The script will request user input for the IP address of your Logstash server and the port. The default port is 10514.
 
 ## What the Script Does
 
