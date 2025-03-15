@@ -751,13 +751,13 @@
                       "type": "elasticsearch",
                       "uid": "${DS_SAFESQUID-CONFIG}"
                   },
-                  "definition": "{\"find\": \"terms\", \"field\":\"hostname\",\"size\": \"1000000\" }",
+                  "definition": "{\"find\": \"terms\", \"field\":\"hostname\" }",
                   "includeAll": true,
                   "label": "Hostname",
                   "multi": true,
                   "name": "hostname",
                   "options": [],
-                  "query": "{\"find\": \"terms\", \"field\":\"hostname\",\"size\": \"1000000\" }",
+                  "query": "{\"find\": \"terms\", \"field\":\"hostname\" }",
                   "refresh": 1,
                   "regex": "",
                   "type": "query"
@@ -768,13 +768,13 @@
                       "type": "elasticsearch",
                       "uid": "${DS_SAFESQUID-CONFIG}"
                   },
-                  "definition": "{\"find\": \"terms\", \"field\":\"server_ip\",\"size\": \"1000000\" }",
+                  "definition": "{\"find\": \"terms\", \"field\":\"server_ip\" }",
                   "includeAll": true,
                   "label": "Server IP",
                   "multi": true,
                   "name": "server_ip",
                   "options": [],
-                  "query": "{\"find\": \"terms\", \"field\":\"server_ip\",\"size\": \"1000000\" }",
+                  "query": "{\"find\": \"terms\", \"field\":\"server_ip\" }",
                   "refresh": 1,
                   "regex": "",
                   "type": "query"
