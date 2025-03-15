@@ -109,6 +109,7 @@ MAIN ()
     SETUP_CONF
     CONFIGURE_GRAFANA_DATASOURCES
     IMPORT_GRAFANA_DASHBOARD
+    systemctl restart grafana-server.service
 }
 
 MAIN
