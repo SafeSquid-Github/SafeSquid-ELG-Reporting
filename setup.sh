@@ -45,7 +45,7 @@ CONFIGURE_GRAFANA_DATASOURCES ()
         "url": "http://localhost:9200",
         "access": "proxy",
         "basicAuth": false,
-        "database": "safesquid-conf_YYYY_MM",
+        "database": "safesquid-conf_*",
         "jsonData": {
             "esVersion": 70,
             "timeField": "@timestamp"
@@ -58,7 +58,7 @@ CONFIGURE_GRAFANA_DATASOURCES ()
         "url": "http://localhost:9200",
         "access": "proxy",
         "basicAuth": false,
-        "database": "safesquid-csp_YYYY_MM",
+        "database": "safesquid-csp_*",
         "jsonData": {
             "esVersion": 70,
             "timeField": "@timestamp"
@@ -71,7 +71,7 @@ CONFIGURE_GRAFANA_DATASOURCES ()
         "url": "http://localhost:9200",
         "access": "proxy",
         "basicAuth": false,
-        "database": "safesquid-ext_YYYY_MM",
+        "database": "safesquid-ext_*",
         "jsonData": {
             "esVersion": 70,
             "timeField": "@timestamp"
@@ -84,7 +84,7 @@ CONFIGURE_GRAFANA_DATASOURCES ()
         "url": "http://localhost:9200",
         "access": "proxy",
         "basicAuth": false,
-        "database": "safesquid-perf_YYYY_MM",
+        "database": "safesquid-perf_*",
         "jsonData": {
             "esVersion": 70,
             "timeField": "@timestamp"
