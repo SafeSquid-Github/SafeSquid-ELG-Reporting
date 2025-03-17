@@ -117,13 +117,11 @@ UPDATE_CONF ()
         then
             RELATIVE_UID=$(jq -r '.dashboard.templating.list[0].datasource.uid' "$JSON_FILE")
             ABSOLUTE_UID=$(curl -s http://admin:sarva1234@localhost:3000/api/datasources/name/$LABELS | jq -r '.uid')
-            echo $RELATIVE_UID : $ABSOLUTE_UID
             [[ ${RELATIVE_UID} == ${ABSOLUTE_UID} ]] && continue
             sed -i "s/\"uid\": \"$RELATIVE_UID\"/\"uid\": \"$ABSOLUTE_UID\"/g" "$JSON_FILE"
         else 
             RELATIVE_UID=$(jq -r '.dashboard.panels[1] | .datasource.uid' "$JSON_FILE")
             ABSOLUTE_UID=$(curl -s http://admin:sarva1234@localhost:3000/api/datasources/name/$LABELS | jq -r '.uid')
-            echo $RELATIVE_UID : $ABSOLUTE_UID
             [[ ${RELATIVE_UID} == ${ABSOLUTE_UID} ]] && continue
             sed -i "s/\"uid\": \"$RELATIVE_UID\"/\"uid\": \"$ABSOLUTE_UID\"/g" "$JSON_FILE"
         fi
