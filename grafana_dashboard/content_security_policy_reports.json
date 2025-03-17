@@ -3,7 +3,7 @@
       "__inputs": [
           {
               "name": "DS_SAFESQUID-CSP",
-              "label": "SafeSquid-CSP",
+              "label": "safesquid-csp",
               "description": "",
               "type": "datasource",
               "pluginId": "elasticsearch",
@@ -194,12 +194,8 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
+
                               }
                           ]
                       }
@@ -292,12 +288,8 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
+
                               }
                           ]
                       }
@@ -452,12 +444,8 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
+
                               }
                           ]
                       }
@@ -582,8 +570,7 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
+                                "color": "green"
                               }
                           ]
                       }
@@ -826,8 +813,7 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
+                                "color": "green"
                               }
                           ]
                       }
@@ -1004,12 +990,8 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
+
                               }
                           ]
                       }
@@ -1162,12 +1144,8 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
+
                               }
                           ]
                       }
@@ -1274,12 +1252,8 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
+
                               }
                           ]
                       }
@@ -1399,8 +1373,7 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
+                                "color": "green"
                               }
                           ]
                       }

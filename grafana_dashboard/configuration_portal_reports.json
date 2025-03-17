@@ -3,7 +3,7 @@
       "__inputs": [
           {
               "name": "DS_SAFESQUID-CONFIG",
-              "label": "SafeSquid-Config",
+              "label": "safesquid-config",
               "description": "",
               "type": "datasource",
               "pluginId": "elasticsearch",
@@ -75,12 +75,7 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
                               }
                           ]
                       }
@@ -260,12 +255,7 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
                               }
                           ]
                       }
@@ -439,12 +429,7 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
                               }
                           ]
                       }
@@ -589,12 +574,7 @@
                           "mode": "absolute",
                           "steps": [
                               {
-                                  "color": "green",
-                                  "value": null
-                              },
-                              {
-                                  "color": "red",
-                                  "value": 80
+                                "color": "green"
                               }
                           ]
                       }

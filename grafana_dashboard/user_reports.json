@@ -49,22 +49,6 @@
         "version": ""
       }
     ],
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
-    },
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
@@ -239,12 +223,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -494,12 +474,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -616,12 +592,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -738,8 +710,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 }
               ]
             }
@@ -897,12 +868,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             },
@@ -1035,8 +1002,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 }
               ]
             },
@@ -1171,8 +1137,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 }
               ]
             },
@@ -1345,12 +1310,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             },
@@ -1578,12 +1539,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             },
@@ -1713,12 +1670,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             },
@@ -1854,12 +1807,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             },
@@ -1989,12 +1938,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             },
@@ -2119,8 +2064,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "rgba(245, 54, 54, 0.9)",
-                  "value": null
+                  "color": "rgba(245, 54, 54, 0.9)"
                 },
                 {
                   "color": "rgba(237, 129, 40, 0.89)",
@@ -2516,12 +2460,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -2774,12 +2714,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -2886,12 +2822,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -3047,12 +2979,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -3170,8 +3098,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 },
                 {
                   "color": "red",
@@ -3270,12 +3197,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -3365,12 +3288,8 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
+                  "color": "green"
+
                 }
               ]
             }
@@ -3476,6 +3395,7 @@
         "type": "table"
       }
     ],
+    "preload": false,
     "refresh": "5s",
     "schemaVersion": 40,
     "tags": [],
@@ -3562,7 +3482,6 @@
     "uid": "000000060",
     "version": 64,
     "weekStart": "",
-    "gnetId": 23078,
     "description": "User Reports - Extended Log Analysis provides in-depth insights into user activity logs, helping track access patterns, anomalies, and system interactions. With detailed filtering and visualization, it enhances security monitoring, compliance auditing, and performance analysis. Ideal for administrators and security teams"
   },
   "overwrite": true,
