@@ -4,7 +4,7 @@
 set -e
 
 ELASTIC_REPO_URL="https://artifacts.elastic.co/packages/8.x/apt"
-GRAFANA_REPO_URL="https://packages.grafana.com"
+GRAFANA_REPO_URL="https://apt.grafana.com"
 
 
 UPDATE_PACKAGES_GET_DEPENDENCIES () 
@@ -16,13 +16,13 @@ UPDATE_PACKAGES_GET_DEPENDENCIES ()
 ADD_REP_ELASTIC () 
 {
     wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor | tee /etc/apt/keyrings/elasticsearch-keyring.gpg > /dev/null
-    sudo echo "deb [signed-by=/etc/apt/keyrings/elasticsearch-keyring.gpg] ${ELASTIC_REPO_URL} stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+    sudo echo "deb [signed-by=/etc/apt/keyrings/elasticsearch-keyring.gpg] ${ELASTIC_REPO_URL} stable main" > /etc/apt/sources.list.d/elastic-8.x.list
 }
 
 APP_REPO_GRAFANA ()
 {
     wget -qO - https://apt.grafana.com/gpg.key | gpg --dearmor | tee /etc/apt/keyrings/grafana.gpg > /dev/null
-    sudo echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] ${GRAFANA_REPO_URL} stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+    sudo echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] ${GRAFANA_REPO_URL} stable main" > /etc/apt/sources.list.d/grafana.list
 }
 
 ADD_REPO () 
