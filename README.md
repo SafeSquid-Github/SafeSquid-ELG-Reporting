@@ -30,11 +30,26 @@ Before running the setup script, ensure you have the following:
 
 To set up the proxy, you can use the following one-liner to download and execute the proxy setup script:
 
+### What the Proxy Setup Script Does
+
+The proxy setup script performs the following actions:
+
+1. Downloads the necessary configuration files.
+2. Prompts the user for the IP address of the Logstash server.
+3. Configures rsyslog to forward logs to the specified Logstash server via UDP on port 10514 (default).
+
+### Running the Proxy Setup Script
+
+When you run the proxy setup script, you will be prompted to enter the IP address of your Logstash server. The default port used for forwarding logs is 10514. If you do not specify a port, the script will use the default port.
+
+usage:
+
 ```sh
 curl -s https://raw.githubusercontent.com/SafeSquid-Github/SafeSquid-ELG-Reporting/refs/heads/main/proxy-setup.sh -O
 bash proxy-setup.sh
 ```
-The script will request user input for the IP address of your Logstash server and the port. The default port is 10514.
+
+During the execution, you will be asked to provide the Logstash server IP address. The script will then configure rsyslog to forward logs to the specified server using UDP on port 10514.
 
 ## What the Script Does
 
