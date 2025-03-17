@@ -53,3 +53,21 @@ The script will request user input for the IP address of your Logstash server an
   - Password: `admin`
 
 It is recommended to change the default password after the first login for security reasons.
+
+## Dashboard Previews
+
+### User Reports Dashboard
+![User Reports Dashboard Page1](images/ext/ext.png)
+![User Reports Dashboard Page2](images/ext/ext1.png)
+
+### Performance Plots Dashboard
+![Performance Plots Dashboard Page1](images/plot/plot.png)
+![Performance Plots Dashboard Page2](images/plot/plot1.png)
+![Performance Plots Dashboard Page3](images/plot/plot2.png)
+
+### Content Security Policy Dashboard
+![Content Security Policy Dashboard](images/csp/csp.png)
+
+
+
+
