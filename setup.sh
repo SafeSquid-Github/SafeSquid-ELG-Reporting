@@ -65,7 +65,7 @@ CONFIGURE_GRAFANA_DATASOURCES ()
             "esVersion": 70,
             "timeField": "@timestamp"
         }
-    }' http://admin:sarva1234@localhost:3000/api/datasources
+    }' http://admin:admin@localhost:3000/api/datasources
 
     curl -X POST -H "Content-Type: application/json" -d '{
         "name": "safesquid-csp",
@@ -78,7 +78,7 @@ CONFIGURE_GRAFANA_DATASOURCES ()
             "esVersion": 70,
             "timeField": "@timestamp"
         }
-    }' http://admin:sarva1234@localhost:3000/api/datasources
+    }' http://admin:admin@localhost:3000/api/datasources
 
     curl -X POST -H "Content-Type: application/json" -d '{
         "name": "safesquid-extended",
@@ -91,7 +91,7 @@ CONFIGURE_GRAFANA_DATASOURCES ()
             "esVersion": 70,
             "timeField": "@timestamp"
         }
-    }' http://admin:sarva1234@localhost:3000/api/datasources
+    }' http://admin:admin@localhost:3000/api/datasources
 
     curl -X POST -H "Content-Type: application/json" -d '{
         "name": "safesquid-performance",
@@ -104,7 +104,7 @@ CONFIGURE_GRAFANA_DATASOURCES ()
             "esVersion": 70,
             "timeField": "@timestamp"
         }
-    }' http://admin:sarva1234@localhost:3000/api/datasources
+    }' http://admin:admin@localhost:3000/api/datasources
 }
 
 UPDATE_CONF () 
@@ -116,12 +116,12 @@ UPDATE_CONF ()
         if [ "$LABELS" != "safesquid-performance" ]; 
         then
             RELATIVE_UID=$(jq -r '.dashboard.templating.list[0].datasource.uid' "$JSON_FILE")
-            ABSOLUTE_UID=$(curl -s http://admin:sarva1234@localhost:3000/api/datasources/name/$LABELS | jq -r '.uid')
+            ABSOLUTE_UID=$(curl -s http://admin:admin@localhost:3000/api/datasources/name/$LABELS | jq -r '.uid')
             [[ ${RELATIVE_UID} == ${ABSOLUTE_UID} ]] && continue
             sed -i "s/\"uid\": \"$RELATIVE_UID\"/\"uid\": \"$ABSOLUTE_UID\"/g" "$JSON_FILE"
         else 
             RELATIVE_UID=$(jq -r '.dashboard.panels[1] | .datasource.uid' "$JSON_FILE")
-            ABSOLUTE_UID=$(curl -s http://admin:sarva1234@localhost:3000/api/datasources/name/$LABELS | jq -r '.uid')
+            ABSOLUTE_UID=$(curl -s http://admin:admin@localhost:3000/api/datasources/name/$LABELS | jq -r '.uid')
             [[ ${RELATIVE_UID} == ${ABSOLUTE_UID} ]] && continue
             sed -i "s/\"uid\": \"$RELATIVE_UID\"/\"uid\": \"$ABSOLUTE_UID\"/g" "$JSON_FILE"
         fi
@@ -131,10 +131,10 @@ UPDATE_CONF ()
 IMPORT_GRAFANA_DASHBOARD () 
 {
     #Import dasboard to grafana
-    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/performance_plots.json http://admin:sarva1234@localhost:3000/api/dashboards/db
-    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/user_reports.json http://admin:sarva1234@localhost:3000/api/dashboards/db
-    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/content_security_policy_reports.json http://admin:sarva1234@localhost:3000/api/dashboards/db
-    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/configuration_portal_reports.json http://admin:sarva1234@localhost:3000/api/dashboards/import
+    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/performance_plots.json http://admin:admin@localhost:3000/api/dashboards/db
+    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/user_reports.json http://admin:admin@localhost:3000/api/dashboards/db
+    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/content_security_policy_reports.json http://admin:admin@localhost:3000/api/dashboards/db
+    curl -X POST -H "Content-Type: application/json" -d @grafana_dashboard/configuration_portal_reports.json http://admin:admin@localhost:3000/api/dashboards/import
 }
 
 MAIN () 
