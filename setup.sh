@@ -15,7 +15,7 @@ UPDATE_PACKAGES_GET_DEPENDENCIES ()
 
 ADD_REP_ELASTIC () 
 {
-    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch gpg --dearmor | tee /etc/apt/keyrings/elasticsearch-keyring.gpg > /dev/null
+    wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor | tee /etc/apt/keyrings/elasticsearch-keyring.gpg > /dev/null
     sudo echo "deb [signed-by=/etc/apt/keyrings/elasticsearch-keyring.gpg] ${ELASTIC_REPO_URL} stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
 }
 
