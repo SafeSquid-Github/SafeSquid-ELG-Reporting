@@ -17,7 +17,7 @@ GET_CONF ()
 
     # Download the files
     for URL in "${URLS[@]}"; do
-        wget -P /tmp/reporting/ "$URL"
+        curl -so "/tmp/reporting/$(basename "$URL")" "$URL"
     done
 }
 
@@ -39,9 +39,9 @@ UPDATE_CONF ()
     [ -f /etc/rsyslog.d/99-safesquid.conf ] && [ ! -f /etc/rsyslog.d/99-safesquid.conf.bak ] && sudo mv /etc/rsyslog.d/99-safesquid.conf /etc/rsyslog.d/99-safesquid.conf.bak
 
     # Sync the files to the appropriate directory
-    sudo rsync -av /tmp/reporting/rsyslog.conf /etc/
-    sudo rsync -av /tmp/reporting/50-default.conf /etc/rsyslog.d/
-    sudo rsync -av /tmp/reporting/99-safesquid.conf /etc/rsyslog.d/
+    sudo rsync -a /tmp/reporting/rsyslog.conf /etc/
+    sudo rsync -a /tmp/reporting/50-default.conf /etc/rsyslog.d/
+    sudo rsync -a /tmp/reporting/99-safesquid.conf /etc/rsyslog.d/
 }
 
 RESTRT_SERVICE () 
