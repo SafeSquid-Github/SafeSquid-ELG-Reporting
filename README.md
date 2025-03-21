@@ -59,7 +59,7 @@ During the execution, you will be asked to provide the Logstash server IP addres
 ## Default Credentials
 
 - **Grafana**: 
-  - URL: http://<reporting-server-ip>:3000
+  - URL: http://\<reporting-server-ip\>:3000
   - Username: `admin`
   - Password: `admin`
 
