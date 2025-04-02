@@ -873,7 +873,7 @@
                 }
               ]
             },
-            "unit": "s"
+            "unit": "ms"
           },
           "overrides": [
             {
