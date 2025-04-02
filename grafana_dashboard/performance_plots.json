@@ -1454,7 +1454,32 @@
                         },
                         "unit": "deckbytes"
                     },
-                    "overrides": []
+                    "overrides": [
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum total_system_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Total System Memory"
+                                }
+                            ]
+                        },
+                        {
+                            "matcher": {
+                                "id": "byName",
+                                "options": "Sum free_system_memory_kb"
+                            },
+                            "properties": [
+                                {
+                                    "id": "displayName",
+                                    "value": "Free System Memory"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 "gridPos": {
                     "h": 8,
@@ -3782,48 +3807,48 @@
         "tags": [],
         "templating": {
             "list": [
-              {
-                "allowCustomValue": false,
-                "current": {
-                  "text": "All",
-                  "value": "$__all"
+                {
+                    "allowCustomValue": false,
+                    "current": {
+                        "text": "All",
+                        "value": "$__all"
+                    },
+                    "datasource": {
+                        "type": "elasticsearch",
+                        "uid": "${DS_SAFESQUID-PERFORMANCE}"
+                    },
+                    "definition": "{\"find\": \"terms\", \"field\":\"hostname\" }",
+                    "includeAll": false,
+                    "label": "Hostname",
+                    "name": "hostname",
+                    "options": [],
+                    "query": "{\"find\": \"terms\", \"field\":\"hostname\" }",
+                    "refresh": 1,
+                    "regex": "",
+                    "type": "query"
                 },
-                "datasource": {
-                  "type": "elasticsearch",
-                  "uid": "${DS_SAFESQUID-PERFORMANCE}"
-                },
-                "definition": "{\"find\": \"terms\", \"field\":\"hostname\" }",
-                "includeAll": false,
-                "label": "Hostname",
-                "name": "hostname",
-                "options": [],
-                "query": "{\"find\": \"terms\", \"field\":\"hostname\" }",
-                "refresh": 1,
-                "regex": "",
-                "type": "query"
-              },
-              {
-                "allowCustomValue": false,
-                "current": {
-                  "text": "All",
-                  "value": "$__all"
-                },
-                "datasource": {
-                  "type": "elasticsearch",
-                  "uid": "${DS_SAFESQUID-PERFORMANCE}"
-                },
-                "definition": "{\"find\": \"terms\", \"field\":\"server_ip\" }",
-                "includeAll": false,
-                "label": "Server IP",
-                "name": "server_ip",
-                "options": [],
-                "query": "{\"find\": \"terms\", \"field\":\"server_ip\" }",
-                "refresh": 1,
-                "regex": "",
-                "type": "query"
-              }
+                {
+                    "allowCustomValue": false,
+                    "current": {
+                        "text": "All",
+                        "value": "$__all"
+                    },
+                    "datasource": {
+                        "type": "elasticsearch",
+                        "uid": "${DS_SAFESQUID-PERFORMANCE}"
+                    },
+                    "definition": "{\"find\": \"terms\", \"field\":\"server_ip\" }",
+                    "includeAll": false,
+                    "label": "Server IP",
+                    "name": "server_ip",
+                    "options": [],
+                    "query": "{\"find\": \"terms\", \"field\":\"server_ip\" }",
+                    "refresh": 1,
+                    "regex": "",
+                    "type": "query"
+                }
             ]
-          },
+        },
         "time": {
             "from": "now-15m",
             "to": "now"
