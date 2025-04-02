@@ -40,8 +40,8 @@ When you run the proxy setup script, you will be prompted to enter the IP addres
 usage:
 
 ```sh
-curl -s https://raw.githubusercontent.com/SafeSquid-Github/SafeSquid-ELG-Reporting/refs/heads/main/proxy-setup.sh -O
-bash proxy-setup.sh
+curl -s https://raw.githubusercontent.com/SafeSquid-Github/SafeSquid-ELG-Reporting/refs/heads/main/proxy-reporting-setup.sh -O
+bash proxy-reporting-setup.sh
 ```
 
 During the execution, you will be asked to provide the Logstash server IP address. The script will then configure rsyslog to forward logs to the specified server using UDP on port 10514.
